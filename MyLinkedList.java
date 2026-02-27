@@ -363,8 +363,27 @@ public class MyLinkedList<E> implements MyList<E> {
   //     returns element
 
   public E set(int index, E e) {
-    System.out.println("You must add the logic for method: set");
-    return null;
+    //Replace the element at the specified position with new element
+    //PRE: accepts the index value & new element
+    //POST:verifies the value (will throw an exception if invalid)
+    //     saves old value at the index
+    //     sets index value to new element  
+    //     returns element
+    //If the index range is invalid, return null
+    if (index < 0 || index >= size) return null;
+    //Assign the current node to head to iterate through
+    Node<E> current = head;
+    //For loop to iterate through the loop, moving to the index item
+    for (int i = 0; i < index; i++) {
+        //Move each item over
+        current = current.next;
+    }
+    //Assign current element to old element
+    E oldElement = current.element;
+    //Assign the new element to the current element
+    current.element = e;
+    //Return the replaced element
+    return oldElement;
   }
   
 
