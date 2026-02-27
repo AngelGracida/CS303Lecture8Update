@@ -1,3 +1,4 @@
+import java.rmi.activation.UnknownGroupException;
 
 public class MyLinkedList<E> implements MyList<E> {
   private Node<E> head, tail;
@@ -294,7 +295,19 @@ public class MyLinkedList<E> implements MyList<E> {
   //POST:verify the index & return null if invalid
   //     return the element 
   public E get(int index) {
-    System.out.println("You must add the logic for method: get");
+    if(index < 0 || index >= size){
+      throw new IndexOutOfBoundsException();
+    }
+    Node<E> current = head;
+    for(int i =0;i<= size-1;i++){
+      if(i == index){
+        return current.element;
+      }
+      else{
+        current = current.next;
+      }
+    }
+    //something went very wrong
     return null;
   }
 
